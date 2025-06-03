@@ -116,3 +116,4 @@ CREATE TABLE comentarios (
 2. Crie uma pasta dentro de xampp/htdocs 
 3. Clone o repositório
 4. Ative o apache + MySql + FileZila no XAMPP Control Panel
+5. Criar o banco e as tabelas no MySql Local. (http://localhost/phpmyadmin)
