@@ -1,5 +1,5 @@
 <?php
-require_once 'service/UsuarioService.php';
+require_once __DIR__ . '/../service/UsuarioService.php';
 
 class UsuarioController {
     private $service;

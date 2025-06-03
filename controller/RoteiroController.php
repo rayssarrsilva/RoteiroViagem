@@ -1,5 +1,5 @@
 <?php
-require_once 'service/RoteiroService.php';
+require_once __DIR__ . '/../service/RoteiroService.php';
 
 class RoteiroController {
     private $service;

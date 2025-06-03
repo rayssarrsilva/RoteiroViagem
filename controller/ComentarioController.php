@@ -1,5 +1,5 @@
 <?php
-require_once 'service/ComentarioService.php';
+require_once __DIR__ . '/../service/ComentarioService.php';
 
 class ComentarioController {
     private $service;

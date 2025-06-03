@@ -1,5 +1,5 @@
 <?php
-require_once 'service/AtividadeService.php';
+require_once __DIR__ . '/../service/AtividadeService.php';
 
 class AtividadeController {
     private $service;
