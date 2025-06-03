@@ -5,10 +5,11 @@ require_once '../controller/AtividadeController.php';
 require_once '../controller/ComentarioController.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = explode('/', $uri);
+$uri = explode('/', trim($uri, '/'));
 
-$entidade = $uri[2] ?? null;
-$id = $uri[3] ?? null;
+$entidade = $uri[1] ?? null;
+$id = $uri[2] ?? null;
+
 $input = json_decode(file_get_contents('php://input'), true);
 
 switch ($entidade) {
