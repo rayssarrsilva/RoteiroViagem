@@ -1,40 +1,30 @@
 <?php
-require_once __DIR__ . '/../service/UsuarioService.php';
+require_once __DIR__ . '/../dao/UsuarioDAO.php';
 
-class UsuarioController {
-    private $service;
+class UsuarioService {
+    private $usuarioDAO;
 
     public function __construct() {
-        $this->service = new UsuarioService();
+        $this->usuarioDAO = new UsuarioDAO();
     }
 
-    public function processarRequisicao($metodo, $dados, $id = null) {
-        header('Content-Type: application/json');
+    public function listar() {
+        return $this->usuarioDAO->listarTodos();
+    }
 
-        switch ($metodo) {
-            case 'GET':
-                if ($id) {
-                    echo json_encode($this->service->buscar($id));
-                } else {
-                    echo json_encode($this->service->listar());
-                }
-                break;
+    public function buscar($id) {
+        return $this->usuarioDAO->buscarPorId($id);
+    }
 
-            case 'POST':
-                echo json_encode($this->service->criar($dados));
-                break;
+    public function criar($dados) {
+        return $this->usuarioDAO->inserir($dados['nome'], $dados['email']);
+    }
 
-            case 'PUT':
-                echo json_encode($this->service->atualizar($id, $dados));
-                break;
+    public function atualizar($id, $dados) {
+        return $this->usuarioDAO->atualizar($id, $dados['nome'], $dados['email']);
+    }
 
-            case 'DELETE':
-                echo json_encode($this->service->deletar($id));
-                break;
-
-            default:
-                http_response_code(405);
-                echo json_encode(['erro' => 'Método não permitido']);
-        }
+    public function deletar($id) {
+        return $this->usuarioDAO->deletar($id);
     }
 }
