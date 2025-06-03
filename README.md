@@ -113,6 +113,6 @@ CREATE TABLE comentarios (
 ## ▶️ Como Rodar Localmente
 
 1. Instale o [XAMPP](https://www.apachefriends.org/pt_br/index.html)
-2. Clone o repositório:
-   bash
-   git clone https://github.com/seu-usuario/roteiros-api.git
+2. Crie uma pasta dentro de xampp/htdocs 
+3. Clone o repositório
+4. Ative o apache + MySql + FileZila no XAMPP Control Panel
