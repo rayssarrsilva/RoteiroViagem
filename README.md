@@ -64,6 +64,8 @@ O sistema foi desenvolvido seguindo a arquitetura MVC com separação clara de r
 | PUT    | http://localhost/viagens/public/comentarios/{id}         | Atualizar comentário |
 | DELETE | http://localhost/viagens/public/comentarios/{id}         | Deletar comentário   |
 
+viagens = nome da minha pasta onde está toda a estrutura MVC e seus respectivos arquivos (variavel)
+public = nome da pasta onde está localizado o acesso aos endpoints (fixo)
 ---
 ## 💾 Banco de Dados
 
