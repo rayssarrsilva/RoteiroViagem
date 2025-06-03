@@ -1,5 +1,5 @@
 <?php
-require_once 'dao/ComentarioDAO.php';
+require_once __DIR__ . '/../dao/ComentarioDAO.php';
 
 class ComentarioService {
     private $comentarioDAO;

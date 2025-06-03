@@ -1,5 +1,5 @@
 <?php
-require_once 'dao/AtividadeDAO.php';
+require_once __DIR__ . '/../dao/AtividadeDAO.php';
 
 class AtividadeService {
     private $atividadeDAO;

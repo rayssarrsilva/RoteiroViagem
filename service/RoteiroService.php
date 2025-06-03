@@ -1,5 +1,5 @@
 <?php
-require_once 'dao/RoteiroDAO.php';
+require_once __DIR__ . '/../dao/RoteiroDAO.php';
 
 class RoteiroService {
     private $roteiroDAO;
