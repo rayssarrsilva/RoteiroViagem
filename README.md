@@ -1,6 +1,6 @@
 ﻿# 📍 Sistema de Roteiros de Viagens Compartilhados – API RESTful em PHP
 
-Este projeto é uma API RESTful desenvolvida em PHP com MySQL, estruturada em *padrão MVC* e separada em camadas (Controller, Service, DAO). O objetivo é permitir que usuários criem roteiros de viagem, adicionem atividades, comentem e interajam com outros roteiros, aplicando boas práticas de organização e desenvolvimento.
+Este projeto consiste em uma API RESTful desenvolvida em PHP com MySQL, utilizando o padrão MVC e uma arquitetura em camadas (Controller, Service e DAO). O sistema tem como objetivo permitir que os usuários criem roteiros de viagem, adicionem atividades, deixem comentários e interajam com roteiros de outros viajantes. Tudo isso seguindo boas práticas de organização, separação de responsabilidades e desenvolvimento
 
 ---
 
