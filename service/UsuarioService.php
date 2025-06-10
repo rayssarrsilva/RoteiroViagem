@@ -1,5 +1,5 @@
 <?php
-require_once _DIR_ . '/../dao/UsuarioDAO.php';
+require_once __DIR__ . '/../dao/UsuarioDAO.php';
 
 class UsuarioService {
     private $usuarioDAO;
@@ -12,7 +12,7 @@ class UsuarioService {
         try {
             return $this->usuarioDAO->listarTodos();
         } catch (Exception $e) {
-            return ["erro" => "Erro interno no serviço: " . $e->getMessage()];
+            return ["erro" => "Erro interno ao listar usuários."];
         }
     }
 

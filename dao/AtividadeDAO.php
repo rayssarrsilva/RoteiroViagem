@@ -1,5 +1,5 @@
 <?php
-require_once _DIR_ . '/../config/Database.php';
+require_once __DIR__ . '/../config/Database.php';
 
 class AtividadeDAO {
     private $conn;

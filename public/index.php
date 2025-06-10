@@ -3,7 +3,7 @@ require_once '../controller/UsuarioController.php';
 require_once '../controller/RoteiroController.php';
 require_once '../controller/AtividadeController.php';
 require_once '../controller/ComentarioController.php';
-require_once '../controller/AuthController.php'; 
+require_once '../controller/AuthController.php';
 require_once '../vendor/autoload.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -14,12 +14,15 @@ $id = $uri[3] ?? null;
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-if ($entidade === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $authController = new AuthController();
-    $authController->login($input);
+// Rota para login
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $entidade === 'login') {
+    $dados = json_decode(file_get_contents("php://input"), true);
+    $auth = new AuthController();
+    $auth->login($dados['email'], $dados['senha']);
     exit;
 }
 
+// Rotas protegidas
 switch ($entidade) {
     case 'usuarios':
         $controller = new UsuarioController();
@@ -40,4 +43,3 @@ switch ($entidade) {
 }
 
 $controller->processarRequisicao($_SERVER['REQUEST_METHOD'], $input, $id);
-?>
