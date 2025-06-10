@@ -4,6 +4,7 @@ require_once '../controller/RoteiroController.php';
 require_once '../controller/AtividadeController.php';
 require_once '../controller/ComentarioController.php';
 require_once '../controller/AuthController.php'; 
+require_once '../vendor/autoload.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', trim($uri, '/'));
