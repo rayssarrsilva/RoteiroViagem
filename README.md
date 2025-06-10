@@ -15,6 +15,12 @@ O sistema foi desenvolvido seguindo a arquitetura MVC com separação clara de r
 
 ---
 
+🔐 Segurança
+- Autenticação via JWT (JSON Web Token).
+- Endpoints protegidos exigem token no cabeçalho:
+
+```http Authorization: Bearer SEU_TOKEN ```
+
 ## 🧩 Funcionalidades
 
 - Cadastro, listagem, atualização e exclusão de *usuários*
