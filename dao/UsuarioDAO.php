@@ -28,14 +28,16 @@ class UsuarioDAO {
         }
     }
 
-    public function inserir($nome, $email) {
+    public function inserir($nome, $email, $senha) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO usuarios (nome, email) VALUES (?, ?)");
-            return $stmt->execute([$nome, $email]);
+            $senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+            $stmt = $this->conn->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
+            return $stmt->execute([$nome, $email, $senhaCriptografada]);
         } catch (PDOException $e) {
             return ["erro" => "Erro ao inserir usuário: " . $e->getMessage()];
         }
     }
+
 
     public function atualizar($id, $nome, $email) {
         try {
@@ -57,7 +59,7 @@ class UsuarioDAO {
 
     public function buscarPorEmail($email) {
         try {
-            $stmt = $this->conexao->prepare("SELECT * FROM usuarios WHERE email = :email");
+            $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC); // retorna usuário como array associativo
