@@ -3,6 +3,7 @@ require_once '../controller/UsuarioController.php';
 require_once '../controller/RoteiroController.php';
 require_once '../controller/AtividadeController.php';
 require_once '../controller/ComentarioController.php';
+require_once '../controller/AuthController.php'; 
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', trim($uri, '/'));
@@ -11,6 +12,12 @@ $entidade = $uri[2] ?? null;
 $id = $uri[3] ?? null;
 
 $input = json_decode(file_get_contents('php://input'), true);
+
+if ($entidade === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $authController = new AuthController();
+    $authController->login($input);
+    exit;
+}
 
 switch ($entidade) {
     case 'usuarios':
