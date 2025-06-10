@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../dao/ComentarioDAO.php';
+require_once _DIR_ . '/../dao/ComentarioDAO.php';
 
 class ComentarioService {
     private $comentarioDAO;
@@ -8,33 +8,27 @@ class ComentarioService {
         $this->comentarioDAO = new ComentarioDAO();
     }
 
-    public function listar() {
-        return $this->comentarioDAO->listarTodos();
-    }
-
-    public function buscar($id) {
-        return $this->comentarioDAO->buscarPorId($id);
+    public function listarPorRoteiro($roteiroId) {
+        try {
+            return $this->comentarioDAO->listarPorRoteiro($roteiroId);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao listar comentários."];
+        }
     }
 
     public function criar($dados) {
-        return $this->comentarioDAO->inserir(
-            $dados['roteiro_id'],
-            $dados['autor'],
-            $dados['comentario']
-        );
-    }
-
-    public function atualizar($id, $dados) {
-        return $this->comentarioDAO->atualizar(
-            $id,
-            $dados['roteiro_id'],
-            $dados['autor'],
-            $dados['comentario']
-        );
+        try {
+            return $this->comentarioDAO->inserir($dados['roteiro_id'], $dados['autor'], $dados['comentario']);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao criar comentário."];
+        }
     }
 
     public function deletar($id) {
-        return $this->comentarioDAO->deletar($id);
+        try {
+            return $this->comentarioDAO->deletar($id);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao deletar comentário."];
+        }
     }
 }
-?>

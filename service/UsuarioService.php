@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../dao/UsuarioDAO.php';
+require_once _DIR_ . '/../dao/UsuarioDAO.php';
 
 class UsuarioService {
     private $usuarioDAO;
@@ -9,22 +9,42 @@ class UsuarioService {
     }
 
     public function listar() {
-        return $this->usuarioDAO->listarTodos();
+        try {
+            return $this->usuarioDAO->listarTodos();
+        } catch (Exception $e) {
+            return ["erro" => "Erro interno no serviço: " . $e->getMessage()];
+        }
     }
 
     public function buscar($id) {
-        return $this->usuarioDAO->buscarPorId($id);
+        try {
+            return $this->usuarioDAO->buscarPorId($id);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao buscar usuário."];
+        }
     }
 
     public function criar($dados) {
-        return $this->usuarioDAO->inserir($dados['nome'], $dados['email']);
+        try {
+            return $this->usuarioDAO->inserir($dados['nome'], $dados['email']);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao criar usuário."];
+        }
     }
 
     public function atualizar($id, $dados) {
-        return $this->usuarioDAO->atualizar($id, $dados['nome'], $dados['email']);
+        try {
+            return $this->usuarioDAO->atualizar($id, $dados['nome'], $dados['email']);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao atualizar usuário."];
+        }
     }
 
     public function deletar($id) {
-        return $this->usuarioDAO->deletar($id);
+        try {
+            return $this->usuarioDAO->deletar($id);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao deletar usuário."];
+        }
     }
 }

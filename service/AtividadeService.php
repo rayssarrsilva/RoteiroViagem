@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../dao/AtividadeDAO.php';
+require_once _DIR_ . '/../dao/AtividadeDAO.php';
 
 class AtividadeService {
     private $atividadeDAO;
@@ -8,35 +8,27 @@ class AtividadeService {
         $this->atividadeDAO = new AtividadeDAO();
     }
 
-    public function listar() {
-        return $this->atividadeDAO->listarTodos();
-    }
-
-    public function buscar($id) {
-        return $this->atividadeDAO->buscarPorId($id);
+    public function listarPorRoteiro($roteiroId) {
+        try {
+            return $this->atividadeDAO->listarPorRoteiro($roteiroId);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao listar atividades."];
+        }
     }
 
     public function criar($dados) {
-        return $this->atividadeDAO->inserir(
-            $dados['roteiro_id'],
-            $dados['nome'],
-            $dados['horario'],
-            $dados['descricao']
-        );
-    }
-
-    public function atualizar($id, $dados) {
-        return $this->atividadeDAO->atualizar(
-            $id,
-            $dados['roteiro_id'],
-            $dados['nome'],
-            $dados['horario'],
-            $dados['descricao']
-        );
+        try {
+            return $this->atividadeDAO->inserir($dados['roteiro_id'], $dados['nome'], $dados['horario'], $dados['descricao']);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao criar atividade."];
+        }
     }
 
     public function deletar($id) {
-        return $this->atividadeDAO->deletar($id);
+        try {
+            return $this->atividadeDAO->deletar($id);
+        } catch (Exception $e) {
+            return ["erro" => "Erro ao deletar atividade."];
+        }
     }
 }
-?>
