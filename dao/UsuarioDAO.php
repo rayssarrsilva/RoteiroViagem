@@ -54,5 +54,18 @@ class UsuarioDAO {
             return ["erro" => "Erro ao deletar usuário: " . $e->getMessage()];
         }
     }
+
+    public function buscarPorEmail($email) {
+        try {
+            $stmt = $this->conexao->prepare("SELECT * FROM usuarios WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC); // retorna usuário como array associativo
+        } catch (PDOException $e) {
+            http_response_code(500);
+            echo json_encode(['erro' => 'Erro ao buscar usuário por e-mail.']);
+            exit;
+        }
+    }
 }
 ?>
