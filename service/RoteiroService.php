@@ -34,7 +34,7 @@ class RoteiroService {
 
     public function atualizar($id, $dados) {
         try {
-            return $this->roteiroDAO->atualizar($id, $dados['destino'], $dados['dias'], $dados['descricao']);
+            return $this->roteiroDAO->atualizar($id, $dados['usuario_id'], $dados['destino'], $dados['dias'], $dados['descricao']);
         } catch (Exception $e) {
             return ["erro" => "Erro ao atualizar roteiro."];
         }

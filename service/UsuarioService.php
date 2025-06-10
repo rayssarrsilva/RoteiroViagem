@@ -26,7 +26,7 @@ class UsuarioService {
 
     public function criar($dados) {
         try {
-            return $this->usuarioDAO->inserir($dados['nome'], $dados['email']);
+            return $this->usuarioDAO->inserir($dados['nome'], $dados['email'], $dados['senha']);
         } catch (Exception $e) {
             return ["erro" => "Erro ao criar usuário."];
         }

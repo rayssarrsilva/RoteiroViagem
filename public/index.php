@@ -14,15 +14,12 @@ $id = $uri[3] ?? null;
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-// Rota para login
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $entidade === 'login') {
-    $dados = json_decode(file_get_contents("php://input"), true);
     $auth = new AuthController();
-    $auth->login($dados['email'], $dados['senha']);
+    $auth->login($input);
     exit;
 }
 
-// Rotas protegidas
 switch ($entidade) {
     case 'usuarios':
         $controller = new UsuarioController();
